@@ -9,11 +9,11 @@
 
 frutas = {
     "manzana": "roja",
-    "banana": , # banana lleva el valor "amarilla"
+    "banana": "amarilla", # banana lleva el valor "amarilla"
     "pera": "verde",
-    "naranja": # naranja lleva el valor "naranja"
+    "naranja": "naranja"# naranja lleva el valor "naranja"
 }
 
 print(frutas)
-print() # banana lleva el valor "amarilla"
+print(frutas.get("banana")) # banana lleva el valor "amarilla"
 print(frutas.get("uva"))

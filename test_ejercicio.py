@@ -1,11 +1,11 @@
+import unittest
 import ejercicio
 
-def test_frutas():
-    frutas = ejercicio.frutas
-    assert frutas["manzana"] == "roja"
-    assert frutas["banana"] == "amarilla"
-    assert frutas["pera"] == "verde"
-    assert frutas["naranja"] == "naranja"
-    assert frutas.get("uva") is None
-
-test_frutas()
+class TestFrutasLocas(unittest.TestCase):
+    def test_frutas(self):
+        frutas = ejercicio.frutas
+        self.assertEqual(frutas["manzana"], "roja")
+        self.assertEqual(frutas["banana"], "amarilla")
+        self.assertEqual(frutas["pera"], "verde")
+        self.assertEqual(frutas["naranja"], "naranja")
+        self.assertEqual(frutas.get("uva"), None)
