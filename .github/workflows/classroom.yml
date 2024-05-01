@@ -1,0 +1,29 @@
+name: Autograding Tests
+'on':
+- push
+- workflow_dispatch
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: "¡Frutas Locas!"
+      id: frutas-locas
+      uses: education/autograding-python-grader@v1
+      with:
+        timeout: 5
+        max-score: 100
+        setup-command: python -m unittest test_ejercicio.py
+    - name: Autograding Reporter
+      uses: education/autograding-grading-reporter@v1
+      env:
+        FRUTAS-LOCAS_RESULTS: "${{steps.frutas-locas.outputs.result}}"
+      with:
+        runners: frutas-locas
